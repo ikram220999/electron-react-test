@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.asd {
+  border: 1px solid grey;
+  border-radius: 10px;
+  color: red;
+}
+
+.headwrap {
+  background-color: cyan;
+  width: 100%;
+}
+
+.loader {
+  padding: 2px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 15%;
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 5px 6px 8px -3px rgba(196, 196, 196, 0.75);
+  -webkit-box-shadow: 5px 6px 8px -3px rgba(196, 196, 196, 0.75);
+  -moz-box-shadow: 5px 6px 8px -3px rgba(196, 196, 196, 0.75);
+}
