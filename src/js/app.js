@@ -4,6 +4,15 @@ import axios from "axios";
 import Item from "./item";
 import Comp from "./comp";
 import load from "../assets/asd.gif";
+import {
+  HashRouter,
+  Link,
+  Outlet,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
+import Form from "./form";
 // const { BrowserWindow } = require("electron");
 
 // import img from "../assets/qwe.jpg";
@@ -12,6 +21,8 @@ export default function App() {
   const [userData, setUserData] = useState({});
   const [totData, setTotData] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   console.log("total data", totData);
 
@@ -49,17 +60,24 @@ export default function App() {
 
         
       </button> */}
+      <button onClick={() => navigate(-1)}>back</button>
       <button onClick={() => resetItem()}>Reset</button>
       <button onClick={() => loadItem()}>load user</button>
-
+      <Link to="/asd">asd</Link>
       <button onClick={() => openForm()}>Form</button>
       <div className="headwrap"></div>
       <h1 className="asd">adasd asd asdasd asdasd kambing anak ayam</h1>
       {/* <Suspense fallback={<>loading ...</>}> */}
 
-      <Item data={totData} />
+      {/* <Item data={totData} /> */}
 
       <br />
+
+      <Outlet />
+
+      {/* <HashRouter> */}
+
+      {/* </HashRouter> */}
 
       {loading ? (
         <>
