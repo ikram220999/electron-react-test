@@ -13,6 +13,22 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Form from "./form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowCircleLeft,
+  faArrowLeft,
+  faArrowLeftLong,
+  faBackspace,
+  faBackward,
+  faHome,
+} from "@fortawesome/free-solid-svg-icons";
+// import {
+//   solid,
+//   regular,
+//   brands,
+//   icon,
+// } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
+
 // const { BrowserWindow } = require("electron");
 
 // import img from "../assets/qwe.jpg";
@@ -50,34 +66,26 @@ export default function App() {
   };
 
   return (
-    <>
-      {/* <button
-        onClick={() => {
-          electron.notificationApi.sendNotification("my custom notification");
-        }}
-      >
-        notify
+    <div className="app">
+      <div className="sidebar">
+        <button onClick={() => navigate(-1)}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <button onClick={() => resetItem()}>Reset</button>
+        <button onClick={() => loadItem()}>load user</button>
+        <Link to="/asd">
+          <button>asd</button>
+        </Link>
+        <button onClick={() => openForm()} type="button" disabled>
+          Form
+        </button>
+      </div>
 
-        
-      </button> */}
-      <button onClick={() => navigate(-1)}>back</button>
-      <button onClick={() => resetItem()}>Reset</button>
-      <button onClick={() => loadItem()}>load user</button>
-      <Link to="/asd">asd</Link>
-      <button onClick={() => openForm()}>Form</button>
-      <div className="headwrap"></div>
-      <h1 className="asd">adasd asd asdasd asdasd kambing anak ayam</h1>
-      {/* <Suspense fallback={<>loading ...</>}> */}
-
-      {/* <Item data={totData} /> */}
-
-      <br />
-
-      <Outlet />
-
-      {/* <HashRouter> */}
-
-      {/* </HashRouter> */}
+      <div className="content">
+        {/* <h1 className="asd">adasd asd asdasd asdasd kambing anak ayam</h1> */}
+        <Outlet />
+        <Item data={totData} />
+      </div>
 
       {loading ? (
         <>
@@ -91,6 +99,6 @@ export default function App() {
         ""
       )}
       {/* </Suspense> */}
-    </>
+    </div>
   );
 }

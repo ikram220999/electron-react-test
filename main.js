@@ -16,6 +16,8 @@ function createWindow() {
     },
   });
 
+  win.setMenu(null);
+
   win.loadFile("index.html");
 }
 
