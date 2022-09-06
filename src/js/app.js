@@ -37,6 +37,7 @@ export default function App() {
   const [userData, setUserData] = useState({});
   const [totData, setTotData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [time, setTime] = useState(0);
 
   const navigate = useNavigate();
 
@@ -57,6 +58,15 @@ export default function App() {
       });
   };
 
+  function notif() {
+    electron.notificationApi.sendNotification("testing  !");
+  }
+  function notifyUser(asd) {
+    setTimeout(function () {
+      notif();
+    }, asd);
+  }
+
   const resetItem = () => {
     setTotData([]);
   };
@@ -73,6 +83,12 @@ export default function App() {
         </button>
         <button onClick={() => resetItem()}>Reset</button>
         <button onClick={() => loadItem()}>load user</button>
+        <input
+          type="number"
+          placeholder="seconds"
+          onChange={(e) => setTime(e.target.value)}
+        ></input>
+        <button onClick={() => notifyUser(time * 1000)}>Notify</button>
         <Link to="/asd">
           <button>Display card</button>
         </Link>
