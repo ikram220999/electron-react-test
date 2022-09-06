@@ -35,22 +35,32 @@ import {
 
 export default function App() {
   const [userData, setUserData] = useState({});
-  const [totData, setTotData] = useState([]);
+  const [totData, setTotData] = useState({});
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState(0);
 
   const navigate = useNavigate();
 
-  console.log("total data", totData);
+  // console.log("total data", totData);
 
-  console.log("userData", userData);
+  // console.log("userData", userData);
   const loadItem = () => {
+    let ops = {
+      method: "GET",
+      url: "https://random-recipes.p.rapidapi.com/ai-quotes/1",
+      headers: {
+        "X-RapidAPI-Key": "10c4a0be16msh2920711b82ec721p1a77e9jsnef61e8089183",
+        "X-RapidAPI-Host": "random-recipes.p.rapidapi.com",
+      },
+    };
+
     setLoading(true);
     axios
-      .get("https://randomuser.me/api/")
+      .request(ops)
       .then(function (response) {
         // setUserData(response.data.results[0]);
-        setTotData((prev) => [...prev, response.data.results[0]]);
+        console.log(response.data[0]);
+        setTotData(response.data[0]);
         setLoading(false);
       })
       .catch(function (error) {
@@ -68,7 +78,7 @@ export default function App() {
   }
 
   const resetItem = () => {
-    setTotData([]);
+    setTotData({});
   };
 
   const openForm = () => {
@@ -82,7 +92,7 @@ export default function App() {
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <button onClick={() => resetItem()}>Reset</button>
-        <button onClick={() => loadItem()}>load user</button>
+        <button onClick={() => loadItem()}>load recipe</button>
         <input
           type="number"
           placeholder="seconds"

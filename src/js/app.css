@@ -45,13 +45,15 @@
   width: 50px;
   height: 100%;
   border: 1px solid red;
-
+  position: fixed;
   display: flex;
   flex-direction: column;
 }
 
 .content {
-  width: 95%;
+  margin-left: 50px;
+  float: right;
+  width: 90%;
   border: 1px solid blue;
   display: flex;
   justify-content: center;

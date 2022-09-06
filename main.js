@@ -12,8 +12,8 @@ const isDev = !app.isPackaged;
 
 function createWindow() {
   var win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 800,
     backgroundColor: "white",
     webPreferences: {
       nodeIntegration: false,
@@ -21,6 +21,7 @@ function createWindow() {
       contextIsolation: true,
       preload: path.join(__dirname, "preload.js"),
     },
+    resizable: false,
   });
 
   // win.setMenu(null);
@@ -41,26 +42,46 @@ function createWindow() {
     return false;
   });
 
+  let template = [];
+
   tray = new Tray("./src/assets/logo.png");
   tray.setToolTip("Tray for Todo");
   tray.on("click", () => {
     win.isVisible() ? win.hide() : win.show();
   });
 
-  let template = [
-    {
-      label: "Show",
-      click: function () {
-        win.show();
+  if (win.isVisible()) {
+    template = [
+      {
+        label: "Hide",
+        click: function () {
+          win.hide();
+        },
       },
-    },
-    {
-      label: "Quit",
-      click: function () {
-        (app.isQuiting = true), app.quit();
+      {
+        label: "Quit",
+        click: function () {
+          (app.isQuiting = true), app.quit();
+        },
       },
-    },
-  ];
+    ];
+  } else {
+    template = [
+      {
+        label: "Show",
+        click: function () {
+          win.show();
+        },
+      },
+      {
+        label: "Quit",
+        click: function () {
+          (app.isQuiting = true), app.quit();
+        },
+      },
+    ];
+  }
+
   let contextMenu = Menu.buildFromTemplate(template);
   tray.setContextMenu(contextMenu);
 }
