@@ -74,7 +74,7 @@ export default function App() {
         <button onClick={() => resetItem()}>Reset</button>
         <button onClick={() => loadItem()}>load user</button>
         <Link to="/asd">
-          <button>asd</button>
+          <button>Display card</button>
         </Link>
         <button onClick={() => openForm()} type="button" disabled>
           Form
