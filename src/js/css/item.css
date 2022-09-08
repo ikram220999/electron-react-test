@@ -7,6 +7,7 @@
   -moz-box-shadow: 2px 0px 5px 0px rgba(207, 207, 207, 0.75);
   padding: 10px;
   border-radius: 10px;
+  background-color: white;
 }
 
 .item-img {

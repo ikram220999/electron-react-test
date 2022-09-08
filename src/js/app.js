@@ -38,6 +38,7 @@ export default function App() {
   const [totData, setTotData] = useState({});
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState(0);
+  const [downloadImage, setDownloadImage] = useState(false);
 
   const navigate = useNavigate();
 
@@ -105,12 +106,15 @@ export default function App() {
         <button onClick={() => openForm()} type="button" disabled>
           Form
         </button>
+        <button onClick={() => setDownloadImage(!downloadImage)} type="button">
+          Download
+        </button>
       </div>
 
       <div className="content">
         {/* <h1 className="asd">adasd asd asdasd asdasd kambing anak ayam</h1> */}
         <Outlet />
-        <Item data={totData} />
+        <Item data={totData} download={downloadImage} />
       </div>
 
       {loading ? (
