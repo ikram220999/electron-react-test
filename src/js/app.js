@@ -43,7 +43,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState(0);
   const [downloadImage, setDownloadImage] = useState(false);
-
+  const [isDownloadable, setIsDownloadable] = useState(false);
   const navigate = useNavigate();
 
   // console.log("total data", totData);
@@ -67,6 +67,7 @@ export default function App() {
         console.log(response.data[0]);
         setTotData(response.data[0]);
         setLoading(false);
+        setIsDownloadable(true);
       })
       .catch(function (error) {
         console.log(error);
@@ -116,13 +117,17 @@ export default function App() {
           Form */}
         {/* </button> */}
         <div className="breakline"></div>
-        <button
-          onClick={() => setDownloadImage(!downloadImage)}
-          type="button"
-          className="btn-icon"
-        >
-          <FontAwesomeIcon icon={faDownload} className="icon btn-icon" />
-        </button>
+        {isDownloadable ? (
+          <button
+            onClick={() => setDownloadImage(!downloadImage)}
+            type="button"
+            className="btn-icon"
+          >
+            <FontAwesomeIcon icon={faDownload} className="icon btn-icon" />
+          </button>
+        ) : (
+          ""
+        )}
 
         <div className="credit">Dev by Ikram</div>
       </div>
