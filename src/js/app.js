@@ -115,6 +115,7 @@ export default function App() {
         <button onClick={() => openForm()} type="button" disabled>
           Form */}
         {/* </button> */}
+        <div className="breakline"></div>
         <button
           onClick={() => setDownloadImage(!downloadImage)}
           type="button"
