@@ -3,7 +3,8 @@ import "./app.css";
 import axios from "axios";
 import Item from "./item";
 import Comp from "./comp";
-import load from "../assets/asd.gif";
+import load from "../assets/sa-unscreen.gif";
+import logo from "../assets/capture.png";
 import {
   HashRouter,
   Link,
@@ -20,7 +21,10 @@ import {
   faArrowLeftLong,
   faBackspace,
   faBackward,
+  faDownload,
+  faFileCirclePlus,
   faHome,
+  faRotateBack,
 } from "@fortawesome/free-solid-svg-icons";
 // import {
 //   solid,
@@ -89,44 +93,53 @@ export default function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <button onClick={() => navigate(-1)}>
+        {/* <button onClick={() => navigate(-1)}>
           <FontAwesomeIcon icon={faArrowLeft} />
+        </button> */}
+        <img src={logo} className="logo"></img>
+        <button onClick={() => resetItem()} className="btn-icon">
+          <FontAwesomeIcon icon={faRotateBack} className="icon btn-icon" />
         </button>
-        <button onClick={() => resetItem()}>Reset</button>
-        <button onClick={() => loadItem()}>load recipe</button>
-        <input
+        <button onClick={() => loadItem()} className="btn-icon">
+          <FontAwesomeIcon icon={faFileCirclePlus} className="icon btn-icon" />
+        </button>
+        {/* <input
           type="number"
           placeholder="seconds"
           onChange={(e) => setTime(e.target.value)}
-        ></input>
-        <button onClick={() => notifyUser(time * 1000)}>Notify</button>
+        ></input> */}
+        {/* <button onClick={() => notifyUser(time * 1000)}>Notify</button>
         <Link to="/asd">
           <button>Display card</button>
         </Link>
         <button onClick={() => openForm()} type="button" disabled>
-          Form
+          Form */}
+        {/* </button> */}
+        <button
+          onClick={() => setDownloadImage(!downloadImage)}
+          type="button"
+          className="btn-icon"
+        >
+          <FontAwesomeIcon icon={faDownload} className="icon btn-icon" />
         </button>
-        <button onClick={() => setDownloadImage(!downloadImage)} type="button">
-          Download
-        </button>
-      </div>
 
-      <div className="content">
-        {/* <h1 className="asd">adasd asd asdasd asdasd kambing anak ayam</h1> */}
-        <Outlet />
-        <Item data={totData} download={downloadImage} />
+        <div className="credit">Dev by Ikram</div>
       </div>
 
       {loading ? (
         <>
           {
             <div className="loader">
-              <img src={load} width={80}></img>
+              <img src={load} width={100}></img>
             </div>
           }
         </>
       ) : (
-        ""
+        <div className="content">
+          {/* <h1 className="asd">adasd asd asdasd asdasd kambing anak ayam</h1> */}
+          <Outlet />
+          <Item data={totData} download={downloadImage} />
+        </div>
       )}
       {/* </Suspense> */}
     </div>
